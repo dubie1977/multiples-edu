@@ -48,7 +48,14 @@ class ViewController: UIViewController {
             currentValue = 0
             numberOfTimesAdded = 0
             nextValue = 0
-            userMsgLbl.text = "Press ADD to add"
+            var isEvenStr = "unknown"
+            if isEven(userEnteredNumber){
+                isEvenStr = "Even"
+            } else{
+                isEvenStr = "Odd"
+            }
+            
+            userMsgLbl.text = "Press ADD to add, your value was " + isEvenStr
             isGameRestarting(false)
             self.view.endEditing(true)
         }
@@ -79,6 +86,10 @@ class ViewController: UIViewController {
     
     func isAddingDone() -> Bool{
         return numberOfTimesAdded >= userEnteredNumber
+    }
+    
+    func isEven(input: Int) -> Bool{
+        return (input % 2 == 0)
     }
 
 }
